@@ -2,19 +2,24 @@ package currencyquote
 
 import (
 	"currency-quote/internal/domain/entities"
-	"fmt"
 )
 
-type ClientBuilder struct {
-	Currency entities.Currency
-}
+func GetLastCurrencyQuote(baseCurrency string, quoteCurrency string) (*entities.CurrencyQuote, error) {
+	currency, err := entities.NewCurrency([2]string{baseCurrency, quoteCurrency})
 
-func (c ClientBuilder) GetLastCurrencyQuote() {
-	fmt.Println("Getting Last Quote")
-	fmt.Println("CurrencyList: ", c.Currency.CurrencyList)
-}
+	if err != nil {
+		return nil, err
+	}
 
-func (c ClientBuilder) GetHistoryCurrencyQuote(reference_date int) {
-	fmt.Println("Getting History Quote")
-	fmt.Println("CurrencyList: ", c.Currency.CurrencyList, "date: ", reference_date)
+	currQuote := entities.NewCurrencyQuote(
+		currency,
+		"undefined",
+		baseCurrency,
+		quoteCurrency,
+		1231,
+		5.433,
+		3.44,
+	)
+
+	return currQuote, nil
 }
