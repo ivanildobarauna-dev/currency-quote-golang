@@ -1,25 +1,29 @@
 package currencyquote
 
 import (
+	"currency-quote/internal/adapters"
 	"currency-quote/internal/domain/entities"
+	"currency-quote/internal/domain/services"
+	"fmt"
 )
 
 func GetLastCurrencyQuote(baseCurrency string, quoteCurrency string) (*entities.CurrencyQuote, error) {
-	currency, err := entities.NewCurrency([2]string{baseCurrency, quoteCurrency})
+	fmt.Println("Use Case Called")
+	currency, err := entities.Currency{
+		Codes: [2]string{baseCurrency, quoteCurrency},
+	}.Init()
 
 	if err != nil {
 		return nil, err
 	}
 
-	currQuote := entities.NewCurrencyQuote(
-		currency,
-		"undefined",
-		baseCurrency,
-		quoteCurrency,
-		1231,
-		5.433,
-		3.44,
-	)
+	currQuote, err := services.GetLastQuoteService(currency, adapters.CurrencyRepository{})
+
+	if err != nil {
+		return nil, err
+	}
+
+	fmt.Println("Currency Quote Extracted", currQuote)
 
 	return currQuote, nil
 }

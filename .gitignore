@@ -26,4 +26,4 @@ go.work.sum
 
 # binary
 
-currency-quote
+cmd/currencyquote/currencyquote
