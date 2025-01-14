@@ -3,7 +3,7 @@ package entities
 import "time"
 
 type CurrencyQuote struct {
-	CurrencyPairCodes    *Currency
+	CurrencyPairCodes    *CurrencyPairList
 	CurrencyPairFullName string
 	BaseCurrencyCode     string
 	QuoteCurrencyCode    string
@@ -13,8 +13,8 @@ type CurrencyQuote struct {
 	QuoteExtractedAt     time.Time
 }
 
-func NewCurrencyQuote(currencyPairCodes *Currency, currencyPairName string, baseCurrencyCode string, quoteCurrencyCode string, quoteTimestamp int, bidPrice float64, askPrice float64) *CurrencyQuote {
-	currQuote := CurrencyQuote{
+func NewCurrencyQuote(currencyPairCodes *CurrencyPairList, currencyPairName string, baseCurrencyCode string, quoteCurrencyCode string, quoteTimestamp int, bidPrice float64, askPrice float64) *[]CurrencyQuote {
+	CurrenciesQuote := []CurrencyQuote{CurrencyQuote{
 		CurrencyPairCodes:    currencyPairCodes,
 		CurrencyPairFullName: currencyPairName,
 		BaseCurrencyCode:     baseCurrencyCode,
@@ -23,7 +23,7 @@ func NewCurrencyQuote(currencyPairCodes *Currency, currencyPairName string, base
 		AskPrice:             askPrice,
 		QuoteTimestamp:       quoteTimestamp,
 		QuoteExtractedAt:     time.Now(),
-	}
+	}}
 
-	return &currQuote
+	return &CurrenciesQuote
 }

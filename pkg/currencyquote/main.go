@@ -7,17 +7,13 @@ import (
 	"fmt"
 )
 
-func GetLastCurrencyQuote(baseCurrency string, quoteCurrency string) (*entities.CurrencyQuote, error) {
-	fmt.Println("Use Case Called")
-	currency, err := entities.Currency{
-		Codes: [2]string{baseCurrency, quoteCurrency},
-	}.Init()
+func GetLastCurrencyQuote(CurrencyPairCodes []string) (*[]entities.CurrencyQuote, error) {
 
-	if err != nil {
-		return nil, err
+	currencyPairList := entities.CurrencyPairList{
+		Pairs: CurrencyPairCodes,
 	}
 
-	currQuote, err := services.GetLastQuoteService(currency, adapters.CurrencyRepository{})
+	currQuote, err := services.GetLastQuoteService(&currencyPairList, adapters.CurrencyRepository{})
 
 	if err != nil {
 		return nil, err

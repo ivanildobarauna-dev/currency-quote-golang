@@ -8,7 +8,7 @@ import (
 func main() {
 	fmt.Println("Calling cmd/currencyquote/main.go")
 	currencyQuote, err := currencyquote.GetLastCurrencyQuote(
-		"USD", "BRL",
+		[]string{"USD-BRL", "USD-JPY"},
 	)
 
 	if err == nil {

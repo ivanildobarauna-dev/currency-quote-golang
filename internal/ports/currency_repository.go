@@ -5,6 +5,5 @@ import (
 )
 
 type ICurrencyRepository interface {
-	GetLastCurrencyQuote(currency *entities.Currency) (*entities.CurrencyQuote, error)
-	//GetHistoricalCurrencyQuote(baseCurrency string, quoteCurrency string, referenceDate int) (*entities.CurrencyQuote, error)
+	GetLastCurrencyQuote(currencyList *entities.CurrencyPairList) (*[]entities.CurrencyQuote, error)
 }

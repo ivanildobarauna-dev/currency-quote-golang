@@ -4,6 +4,6 @@ import (
 	"currency-quote/internal/domain/entities"
 )
 
-func ValidatorService(c entities.Currency) {
+func ValidatorService(c entities.CurrencyPairList) {
 	// TODO
 }

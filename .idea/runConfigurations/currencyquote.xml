@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="currencyquote" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <module name="currency-quote-golang" />
+    <working_directory value="$PROJECT_DIR$/cmd/currencyquote" />
+    <kind value="DIRECTORY" />
+    <package value="currency-quote/cmd/currencyquote" />
+    <directory value="$PROJECT_DIR$/cmd/currencyquote" />
+    <filePath value="$PROJECT_DIR$" />
+    <output_directory value="$PROJECT_DIR$/cmd/currencyquote" />
+    <pty_enabled value="true" />
+    <method v="2" />
+  </configuration>
+</component>

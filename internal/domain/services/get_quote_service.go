@@ -6,7 +6,7 @@ import (
 	"fmt"
 )
 
-func GetLastQuoteService(c *entities.Currency, repo ports.ICurrencyRepository) (*entities.CurrencyQuote, error) {
+func GetLastQuoteService(c *entities.CurrencyPairList, repo ports.ICurrencyRepository) (*[]entities.CurrencyQuote, error) {
 	fmt.Println("Starting GetLastQuoteService")
 	repositoryResponse, err := repo.GetLastCurrencyQuote(c)
 
